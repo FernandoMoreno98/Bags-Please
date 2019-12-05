@@ -17,6 +17,7 @@ public abstract class Labourer : MonoBehaviour, IGoap
 
     void Start()
     {
+        backpack = GetComponent<BackpackComponent>();
         if (backpack == null)
             backpack = gameObject.AddComponent<BackpackComponent>() as BackpackComponent;
     }
@@ -34,10 +35,7 @@ public abstract class Labourer : MonoBehaviour, IGoap
     {
         HashSet<KeyValuePair<string, object>> worldData = new HashSet<KeyValuePair<string, object>>();
 
-        worldData.Add(new KeyValuePair<string, object>("hasFood", (backpack.alimentos.Count > 0)));
-        worldData.Add(new KeyValuePair<string, object>("KindsOfFoods", (new HashSet<Alimento.enAlimentos>(backpack.alimentos))));
-      
-
+        worldData.Add(new KeyValuePair<string, object>("hasFood", (backpack.HasFood())));
         return worldData;
     }
 
@@ -52,6 +50,7 @@ public abstract class Labourer : MonoBehaviour, IGoap
         // Not handling this here since we are making sure our goals will always succeed.
         // But normally you want to make sure the world state has changed before running
         // the same goal again, or else it will just fail.
+        getWorldState();
     }
 
     public void planFound(HashSet<KeyValuePair<string, object>> goal, Queue<GoapAction> actions)
@@ -80,7 +79,7 @@ public abstract class Labourer : MonoBehaviour, IGoap
         float step = moveSpeed * Time.deltaTime;
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, nextAction.target.transform.position, step);
 
-        if (gameObject.transform.position.Equals(nextAction.target.transform.position))
+        if (Vector3.Distance(gameObject.transform.position, nextAction.target.transform.position) < 0.2f) 
         {
             // we are at the target location, we are done
             nextAction.setInRange(true);

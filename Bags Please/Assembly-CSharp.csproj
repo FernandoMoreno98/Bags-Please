@@ -64,11 +64,14 @@
     <Compile Include="Assets\Assets externos no tocar\Supercyan Character Pack Free Sample\Scripts\Demo.cs" />
     <Compile Include="Assets\Assets externos no tocar\Supercyan Character Pack Free Sample\Scripts\SimpleCharacterControl.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actions\FillStandAction.cs" />
+    <Compile Include="Assets\Scripts\GAMEDATA\Actions\TakeFoodFromWareHouse.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actors\BackpackComponent.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actors\Labourer.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actors\StoreRestocker.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Alimento.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\EstanteComponent.cs" />
+    <Compile Include="Assets\Scripts\GAMEDATA\FoodComponent.cs" />
+    <Compile Include="Assets\Scripts\GAMEDATA\WareHouseComponent.cs" />
     <Compile Include="Assets\Scripts\IA\FMS\FMS.cs" />
     <Compile Include="Assets\Scripts\IA\FMS\FMState.cs" />
     <Compile Include="Assets\Scripts\IA\GOAP\GoapAction.cs" />

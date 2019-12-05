@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
 
 public class FillStandAction : GoapAction
 {
@@ -9,23 +12,26 @@ public class FillStandAction : GoapAction
 
     private float startTime = 0;
     public float workDuration = 2; // seconds
+    public Alimento.enAlimentos FillerFood;//Alimento usado para rellenar
 
     public FillStandAction()
     {
-
+        addPrecondition("hasFood", true); // we need have food 
+        addEffect("fillStand", true); // we filled the stand
     }
 
     public override bool checkProceduralPrecondition(GameObject agent)
     {
-        // find the nearest rock that we can mine
+        Debug.Log("Check Procedural");
+        // find the nearest stand we can fill
         EstanteComponent[] estantes = FindObjectsOfType(typeof(EstanteComponent)) as EstanteComponent[];
         EstanteComponent closest = null;
         float closestDist = 0;
 
-        //PRIMERO SE PRIORIZA RELLENAR LAS ESTANTERIAS VACIAS
+        //PRIMERO SE PRIORIZA RELLENAR LAS ESTANTERIAS VACIAS && QUE NO ESTEN EN USO
         foreach (EstanteComponent estante in estantes)
         {
-            if (estante.isEmpty)
+            if (estante.isEmpty() && !estante.isUsed)
             {
                 if (closest == null)
                 {
@@ -48,18 +54,23 @@ public class FillStandAction : GoapAction
             
         }
 
-        //SI HEMOS ENCONTRADO UNA VACIA SE SELECCIONA ESA Y SE DICE QUE SE PUEDE RELLENAR
+        //SI HEMOS ENCONTRADO UNA VACIA SE SELECCIONA ESA Y SE DICE QUE SE PUEDE RELLENAR && QUE NO ESTEN EN USO
         if (closest != null)
         {
+            //Toma un alimento al azar pero tienen mayor probabilidad aquellos de los que almacene mas cantidad
+            List<Alimento.enAlimentos> auxList = agent.GetComponent<BackpackComponent>().alimentos;
+            if(auxList.Count>0)
+            FillerFood = auxList[(int) (UnityEngine.Random.Range(0,auxList.Count-1.0f))] ;
+            Debug.Log(FillerFood);
             targetEstanteComponent = closest;
             target = targetEstanteComponent.gameObject;
             return closest != null;
         }
 
-        //SEGUNDO SE PRIORIZA RELLENAR AQUELLAS CON EL MISMO PRODUCTO QUE SE TIENE Y QUE NO ESTEN LLENAS
+        //SEGUNDO SE PRIORIZA RELLENAR AQUELLAS CON EL MISMO PRODUCTO QUE SE TIENE Y QUE NO ESTEN LLENAS Y QUE NO ESTE EN USO
         foreach (EstanteComponent estante in estantes)
         {
-            //if (estante.alimento == agent.GetComponent<>().alimento && estante.isFull)//DEBUG
+            if (agent.GetComponent<BackpackComponent>().HasFood(estante.alimento) && !estante.isFull() && !estante.isUsed)//DEBUG
             {
                 if (closest == null)
                 {
@@ -83,6 +94,7 @@ public class FillStandAction : GoapAction
         }
 
         //SI HEMOS ENCONTRADO UNA QUE CUMPLA LA SEGUNDA POSIBLE SE SELECCIONA ESA Y SE DICE QUE SE PUEDE RELLENAR
+        FillerFood = closest.alimento;
         targetEstanteComponent = closest;
         target = targetEstanteComponent.gameObject;
         return closest != null;
@@ -90,12 +102,42 @@ public class FillStandAction : GoapAction
 
     public override bool isDone()
     {
-        throw new System.NotImplementedException();
+        return filled;
     }
 
     public override bool perform(GameObject agent)
     {
-        throw new System.NotImplementedException();
+        BackpackComponent backpack = (BackpackComponent)agent.GetComponent(typeof(BackpackComponent));
+        if (backpack.KindsOfFoodAvailable().Contains(FillerFood))
+        {
+            if (startTime == 0)
+                startTime = Time.time;
+            targetEstanteComponent.isUsed = true;//Se ocupa la estanteria por tanto nadie mas puede acceder.
+                                                 //(Asi tambien resolvemos temas de concurrencia , aunque se podria hacer que pudieran "modificar" varios)
+
+            if (Time.time - startTime > workDuration)
+            {
+                // finished filled
+                EstanteComponent estante = targetEstanteComponent;
+
+                int filledAmount = estante.canFill(FillerFood, backpack.dictionary[FillerFood]);
+                int takedAmount = backpack.Take(FillerFood, filledAmount);
+                estante.Fill(FillerFood, takedAmount);
+                filled = true;
+
+                //SOLO si nos quedamos sin comida en la mochila añadimos el efecto 
+                //(Se deberia hacer en el constructor, yo creo q no porq no es algo q se sabe que se cumple a priori)
+                if (!backpack.HasFood())
+                {
+                    addEffect("hasFood", false);
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
+        return true;
     }
 
     public override bool requiresInRange()
@@ -105,18 +147,9 @@ public class FillStandAction : GoapAction
 
     public override void reset()
     {
-        throw new System.NotImplementedException();
+        filled = false;
+        targetEstanteComponent = null;
+        startTime = 0;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
