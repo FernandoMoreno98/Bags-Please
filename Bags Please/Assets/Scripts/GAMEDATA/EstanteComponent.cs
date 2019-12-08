@@ -45,7 +45,7 @@ public class EstanteComponent : MonoBehaviour
     //Devuelve la cantidad que es posible rellenar de cierto producto.
     public int canFill(Alimento.enAlimentos a,int amount)
     {
-        if (amount == 0)//Cambiamos el tipo de producto que guarda
+        if (currentAmount == 0)//Cambiamos el tipo de producto que guarda
         {
             alimento = a;
             maxAmount = Alimento.Alimentos_MaxAmountEstante[a];//CAMBIAMOS EL MAXIMO DE CANTIDAD PERMITIDA EN FUNCION DEL NUEVO PRODUCTO
@@ -53,14 +53,16 @@ public class EstanteComponent : MonoBehaviour
 
         int aux = amount;
         int aux2 = currentAmount;
+        int c = 0;
         while (maxAmount > aux2 && aux > 0)
         {
             //alimentos.Add(a);
             aux--;
             aux2++;
+            c++;
         }
         //ToDictionary();
-        return amount - aux;
+        return c;
     }
 
     //Rellena la estanteria con la cantidad maxima posible de cierto producto.

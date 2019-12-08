@@ -112,7 +112,7 @@ public class FillStandAction : GoapAction
         {
             if (startTime == 0)
                 startTime = Time.time;
-            targetEstanteComponent.isUsed = true;//Se ocupa la estanteria por tanto nadie mas puede acceder.
+                targetEstanteComponent.isUsed = true;//Se ocupa la estanteria por tanto nadie mas puede acceder.
                                                  //(Asi tambien resolvemos temas de concurrencia , aunque se podria hacer que pudieran "modificar" varios)
 
             if (Time.time - startTime > workDuration)
@@ -121,8 +121,11 @@ public class FillStandAction : GoapAction
                 EstanteComponent estante = targetEstanteComponent;
 
                 int filledAmount = estante.canFill(FillerFood, backpack.dictionary[FillerFood]);
+                Debug.LogError(filledAmount + " Amount i can fill");
                 int takedAmount = backpack.Take(FillerFood, filledAmount);
-                estante.Fill(FillerFood, takedAmount);
+                Debug.LogError(takedAmount + " Amount i take considering the one i can fill");
+                int a = estante.Fill(FillerFood, takedAmount);
+                Debug.LogError(a + " Amount i fill considering the one i take");
                 filled = true;
 
                 //SOLO si nos quedamos sin comida en la mochila añadimos el efecto 

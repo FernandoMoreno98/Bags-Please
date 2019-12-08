@@ -36,6 +36,7 @@ public class BackpackComponent : MonoBehaviour
     //Devuelve la maxima cantidad que se puede rellenar
     public int canFill(Alimento.enAlimentos a, int amount)
     {
+        ToDictionary();
         int aux = amount;
         int aux2 = alimentos.Count;
         while (maxAmount > aux2 && aux>0)
@@ -50,36 +51,40 @@ public class BackpackComponent : MonoBehaviour
 
     public int Fill(Alimento.enAlimentos a, int amount)
     {
+        ToDictionary();
         int cFill = canFill(a,amount);
         
         for (int i =0; i < cFill;i++)
         {
             alimentos.Add(a);
         }
-        ToDictionary();//Actualiza el diccionario
+       //Actualiza el diccionario
         return cFill;
     }
     //Devuelve la maxima cantidad que se puede tomar 
     public int canTake(Alimento.enAlimentos a, int amount)
     {
+        ToDictionary();
         int c = dictionary[a];
         int aux = 0;
-        while (c > 0)
+        while (c > 0 && aux<amount)
         {
             aux++;
             c--;
         }
+        Debug.LogError("Can take: " + aux);
         return aux;
+        
     }
 
     public int Take(Alimento.enAlimentos a, int amount)
     {
+        ToDictionary();
         int cTake = canTake(a, amount);
         for (int i = 0; i < cTake; i++)
         {
             alimentos.Remove(a);
         }
-        ToDictionary();
         return cTake;
     }
 
