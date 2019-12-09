@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StoreRestocker : Labourer
 {
-    public int MaxRandomAmountWantTake = 10;
+    public float MaxRandomAmountWantTake = 10.0f;
+    public float MinRandomAmountWantTake = 2.0f;
     /**
        * Our only goal will ever be to fill stands
        * The StoreRestocker will be able to fulfill this goal.
@@ -19,7 +20,6 @@ public class StoreRestocker : Labourer
 
     public int RandomTakenAmount()
     {
-        //Debug.Log("ssssisisi");
-        return (int)UnityEngine.Random.Range(0.0f, MaxRandomAmountWantTake);
+        return (int)UnityEngine.Random.Range(MinRandomAmountWantTake, MaxRandomAmountWantTake);
     }
 }

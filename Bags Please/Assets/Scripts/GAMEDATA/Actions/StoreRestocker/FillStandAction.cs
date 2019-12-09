@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class FillStandAction : GoapAction
@@ -61,7 +62,7 @@ public class FillStandAction : GoapAction
             List<Alimento.enAlimentos> auxList = agent.GetComponent<BackpackComponent>().alimentos;
             if(auxList.Count>0)
             FillerFood = auxList[(int) (UnityEngine.Random.Range(0,auxList.Count-1.0f))] ;
-            Debug.Log(FillerFood);
+            //Debug.Log(FillerFood);
             targetEstanteComponent = closest;
             target = targetEstanteComponent.gameObject;
             return closest != null;
@@ -93,10 +94,13 @@ public class FillStandAction : GoapAction
            
         }
 
-        //SI HEMOS ENCONTRADO UNA QUE CUMPLA LA SEGUNDA POSIBLE SE SELECCIONA ESA Y SE DICE QUE SE PUEDE RELLENAR
-        FillerFood = closest.alimento;
-        targetEstanteComponent = closest;
-        target = targetEstanteComponent.gameObject;
+        if (closest != null)
+        {
+            //SI HEMOS ENCONTRADO UNA QUE CUMPLA LA SEGUNDA POSIBLE SE SELECCIONA ESA Y SE DICE QUE SE PUEDE RELLENAR
+            FillerFood = closest.alimento;
+            targetEstanteComponent = closest;
+            target = targetEstanteComponent.gameObject;
+        }     
         return closest != null;
     }
 
@@ -121,11 +125,11 @@ public class FillStandAction : GoapAction
                 EstanteComponent estante = targetEstanteComponent;
 
                 int filledAmount = estante.canFill(FillerFood, backpack.dictionary[FillerFood]);
-                Debug.LogError(filledAmount + " Amount i can fill");
+               // Debug.LogError(filledAmount + " Amount i can fill");
                 int takedAmount = backpack.Take(FillerFood, filledAmount);
-                Debug.LogError(takedAmount + " Amount i take considering the one i can fill");
+               // Debug.LogError(takedAmount + " Amount i take considering the one i can fill");
                 int a = estante.Fill(FillerFood, takedAmount);
-                Debug.LogError(a + " Amount i fill considering the one i take");
+               // Debug.LogError(a + " Amount i fill considering the one i take");
                 filled = true;
 
                 //SOLO si nos quedamos sin comida en la mochila añadimos el efecto 
@@ -134,6 +138,7 @@ public class FillStandAction : GoapAction
                 {
                     addEffect("hasFood", false);
                 }
+                targetEstanteComponent.isUsed = false;
             }
         }
         else

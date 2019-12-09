@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 
 /**
@@ -12,7 +13,8 @@ using System.Collections.Generic;
 public abstract class Labourer : MonoBehaviour, IGoap
 {
     public BackpackComponent backpack;
-    public float moveSpeed = 1;
+    //public float moveSpeed = 1;
+    public NavMeshAgent navMeshAgent;
 
 
     void Start()
@@ -20,6 +22,7 @@ public abstract class Labourer : MonoBehaviour, IGoap
         backpack = GetComponent<BackpackComponent>();
         if (backpack == null)
             backpack = gameObject.AddComponent<BackpackComponent>() as BackpackComponent;
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
 
@@ -31,7 +34,7 @@ public abstract class Labourer : MonoBehaviour, IGoap
     /**
 	 * Key-Value data that will feed the GOAP actions and system while planning.
 	 */
-    public HashSet<KeyValuePair<string, object>> getWorldState()
+    public virtual HashSet<KeyValuePair<string, object>> getWorldState()
     {
         HashSet<KeyValuePair<string, object>> worldData = new HashSet<KeyValuePair<string, object>>();
 
@@ -76,16 +79,26 @@ public abstract class Labourer : MonoBehaviour, IGoap
     public bool moveAgent(GoapAction nextAction)
     {
         // move towards the NextAction's target
-        float step = moveSpeed * Time.deltaTime;
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, nextAction.target.transform.position, step);
-
-        if (Vector3.Distance(gameObject.transform.position, nextAction.target.transform.position) < 0.2f) 
+        //float step = moveSpeed * Time.deltaTime;
+        //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, nextAction.target.transform.position, step);
+        
+        if (Vector3.Distance(gameObject.transform.position, nextAction.target.transform.position) < 1f) 
         {
             // we are at the target location, we are done
             nextAction.setInRange(true);
             return true;
         }
         else
+        {
+           
+            if(navMeshAgent.destination!= nextAction.target.transform.position)
+            {
+                Debug.Log(nextAction.target.transform.position);
+                navMeshAgent.SetDestination(nextAction.target.transform.position);
+            }
+           
             return false;
+        }
+            
     }
 }

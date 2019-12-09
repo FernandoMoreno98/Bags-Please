@@ -27,7 +27,11 @@ public class BackpackComponent : MonoBehaviour
         return false;
     }
 
-
+    public void Vaciar()
+    {
+        alimentos.Clear();
+        ToDictionary();
+    }
     public int FoodAmount(Alimento.enAlimentos a)
     {
        return dictionary[a];
@@ -72,7 +76,7 @@ public class BackpackComponent : MonoBehaviour
             aux++;
             c--;
         }
-        Debug.LogError("Can take: " + aux);
+        //Debug.LogError("Can take: " + aux);
         return aux;
         
     }
