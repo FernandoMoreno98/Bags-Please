@@ -50,7 +50,7 @@ public class TakeFoodFromWareHouse : GoapAction
             WareHouseComponent wareHouse = targetWareHouseComponent;
             BackpackComponent backpackWareHouse = (BackpackComponent)wareHouse.GetComponent(typeof(BackpackComponent));
 
-            while (!backpack.isFull() && backpackWareHouse.HasFood())
+            while (!filled && backpackWareHouse.HasFood())
             {
                 //Seleccionamos de los alimentos disponibles en el almacen uno aleatorio.
                 List<Alimento.enAlimentos> ListofAlimentosAvailable = backpackWareHouse.KindsOfFoodAvailable();
@@ -64,10 +64,12 @@ public class TakeFoodFromWareHouse : GoapAction
                     preTakeAmount = aux.RandomTakenAmount();//ESTA CANTIDAD NO ES LA CANTIDAD QUE SE COGE FINALMENTE , SIMPLEMENTE ES LA CANTIDAD QUE DESEA COGER
                 }
                 int canFillAmount = backpack.canFill(alimentoRandom, preTakeAmount);//Cantidad de ese alimento que puede meter en su inventario a pesar de que su idea fuera meter mas.
-
+                //Debug.LogError(canFillAmount + " canfill");
                 //TakedAmount es la cantidad que si ha podido coger en base a la disponibilidad de ese producto en el almacen y teniendo en cuenta que ya se valoro la disponibilidad del propio inventario
                 int takedAmount = backpackWareHouse.Take(alimentoRandom, canFillAmount);
-                backpack.Fill(alimentoRandom,takedAmount);
+                //Debug.LogError(takedAmount+ " taked");
+                int r = backpack.Fill(alimentoRandom,takedAmount);
+                //Debug.LogError(r + " fill");
                 //Debug.Log("Creo que estoy embuclado " + canFillAmount + " " + alimentoRandom);
                 filled = true;
             }
