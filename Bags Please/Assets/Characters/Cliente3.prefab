@@ -1304,7 +1304,7 @@ GameObject:
   - component: {fileID: 2559230893814766449}
   - component: {fileID: 81656738}
   - component: {fileID: 81656736}
-  - component: {fileID: 46898584953875669}
+  - component: {fileID: 81656740}
   - component: {fileID: 81656737}
   - component: {fileID: 81656739}
   m_Layer: 0
@@ -1415,7 +1415,7 @@ MonoBehaviour:
   target: {fileID: 0}
   workDuration: 2
   DesiredFood: 0
---- !u!114 &46898584953875669
+--- !u!114 &81656740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1459,8 +1459,8 @@ MonoBehaviour:
   backpack: {fileID: 0}
   navMeshAgent: {fileID: 0}
   listaDelaCompra: 
-  maxFoodToBuy: 8
-  minFoodToBuy: 4
+  maxFoodToBuy: 2
+  minFoodToBuy: 1
   minFoodToBuyOfCertainProduct: 1
   maxFoodToBuyOfCertainProduct: 2
   currentFoodOnList: 0
