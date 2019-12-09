@@ -1301,6 +1301,11 @@ GameObject:
   - component: {fileID: 95612694983450844}
   - component: {fileID: 1055708001}
   - component: {fileID: 6435022508915721693}
+  - component: {fileID: 4395065464211431797}
+  - component: {fileID: 4494870335537247717}
+  - component: {fileID: 189542375413756453}
+  - component: {fileID: 8322651732225963321}
+  - component: {fileID: 1356901706643670671}
   m_Layer: 0
   m_Name: Cliente1
   m_TagString: Untagged
@@ -1352,16 +1357,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1968476592218994}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.4
-  m_Speed: 2
-  m_Acceleration: 5
-  avoidancePriority: 50
-  m_AngularSpeed: 90
-  m_StoppingDistance: 1
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 70
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.1
+  m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -1381,3 +1386,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4395065464211431797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968476592218994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd9aadd51c68c649b5f9fceb5d58f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4494870335537247717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968476592218994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f88eddbc4a2ee4fbec64dd0437d53a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 2
+  DesiredFood: 0
+--- !u!114 &189542375413756453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968476592218994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5d046c90ac23c41ab416c2588a65c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 2
+--- !u!114 &8322651732225963321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968476592218994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0835eba9369cb6b49bee9a40af9d2253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmount: 10
+  alimentos: 
+--- !u!114 &1356901706643670671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968476592218994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8d14236ccd4d3439cd6577df3e49e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backpack: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  listaDelaCompra: 
+  maxFoodToBuy: 2
+  minFoodToBuy: 1
+  minFoodToBuyOfCertainProduct: 1
+  maxFoodToBuyOfCertainProduct: 2
+  currentFoodOnList: 0

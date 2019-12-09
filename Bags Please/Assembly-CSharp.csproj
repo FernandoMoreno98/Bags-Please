@@ -64,6 +64,7 @@
     <Compile Include="Assets\Assets externos no tocar\Supercyan Character Pack Free Sample\Scripts\Demo.cs" />
     <Compile Include="Assets\Assets externos no tocar\Supercyan Character Pack Free Sample\Scripts\SimpleCharacterControl.cs" />
     <Compile Include="Assets\CajaComponent.cs" />
+    <Compile Include="Assets\FoodManager.cs" />
     <Compile Include="Assets\Salida.cs" />
     <Compile Include="Assets\Scripts\GAME\AudioManager.cs" />
     <Compile Include="Assets\Scripts\GAME\Contact.cs" />
