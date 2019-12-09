@@ -67,7 +67,7 @@
     <Compile Include="Assets\Scripts\GAME\Game.cs" />
     <Compile Include="Assets\Scripts\GAME\GameOver.cs" />
     <Compile Include="Assets\Scripts\GAME\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\GAME\Options.cs" />
+    <Compile Include="Assets\Scripts\GAME\Settings.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actions\FillStandAction.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actions\TakeFoodFromStand.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actions\TakeFoodFromWareHouse.cs" />
