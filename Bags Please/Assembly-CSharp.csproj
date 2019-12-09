@@ -66,6 +66,8 @@
     <Compile Include="Assets\CajaComponent.cs" />
     <Compile Include="Assets\FoodManager.cs" />
     <Compile Include="Assets\Salida.cs" />
+    <Compile Include="Assets\Scripts\Animators\AnimationCliente.cs" />
+    <Compile Include="Assets\Scripts\Animators\AnimationReponedor.cs" />
     <Compile Include="Assets\Scripts\GAME\AudioManager.cs" />
     <Compile Include="Assets\Scripts\GAME\Contact.cs" />
     <Compile Include="Assets\Scripts\GAME\DepotDemand.cs" />
