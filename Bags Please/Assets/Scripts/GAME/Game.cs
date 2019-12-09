@@ -16,4 +16,14 @@ public class Game : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("BotonSalida");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
     }
+
+    public void modifyQuantity()
+    {
+
+    }
+
+    public void buyProducts()
+    {
+
+    }
 }

@@ -67,9 +67,11 @@
     <Compile Include="Assets\Salida.cs" />
     <Compile Include="Assets\Scripts\GAME\AudioManager.cs" />
     <Compile Include="Assets\Scripts\GAME\Contact.cs" />
+    <Compile Include="Assets\Scripts\GAME\DepotDemand.cs" />
     <Compile Include="Assets\Scripts\GAME\Game.cs" />
     <Compile Include="Assets\Scripts\GAME\GameOver.cs" />
     <Compile Include="Assets\Scripts\GAME\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\GAME\Score.cs" />
     <Compile Include="Assets\Scripts\GAME\Settings.cs" />
     <Compile Include="Assets\Scripts\GAME\Sound.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actions\Client\Left.cs" />
