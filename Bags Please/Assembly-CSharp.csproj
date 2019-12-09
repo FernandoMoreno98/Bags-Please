@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\GAMEDATA\Actors\BackpackComponent.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actors\Labourer.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Actors\StoreRestocker.cs" />
+    <Compile Include="Assets\Scripts\GAMEDATA\Actors\Waypoints.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\Alimento.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\EstanteComponent.cs" />
     <Compile Include="Assets\Scripts\GAMEDATA\FoodComponent.cs" />
