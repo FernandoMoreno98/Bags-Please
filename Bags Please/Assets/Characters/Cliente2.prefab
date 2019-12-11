@@ -1299,14 +1299,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4889916270699016}
   - component: {fileID: 95612694983450844}
-  - component: {fileID: 1450675744}
-  - component: {fileID: 1450675745}
   - component: {fileID: 1450675746}
-  - component: {fileID: 1450675747}
   - component: {fileID: 1450675748}
   - component: {fileID: 1450675749}
   - component: {fileID: 1450675750}
   - component: {fileID: 2743704000370000139}
+  - component: {fileID: 114277197683879320}
+  - component: {fileID: 114451745681621906}
+  - component: {fileID: 114985883916882944}
   m_Layer: 0
   m_Name: Cliente2
   m_TagString: Untagged
@@ -1349,37 +1349,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1450675744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968476592218994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fad8097cb73564b8c8178531b3c2cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 1
-  target: {fileID: 0}
-  workDuration: 2
---- !u!114 &1450675745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968476592218994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 478d68ce52a860342be891eaaea00dab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 1
-  target: {fileID: 0}
-  workDuration: 2
-  FillerFood: 0
 --- !u!114 &1450675746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,22 +1363,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAmount: 20
   alimentos: 
---- !u!114 &1450675747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968476592218994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e27d95cfd4a62442b4dc17d33541c2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backpack: {fileID: 0}
-  moveSpeed: 1
-  navMeshAgent: {fileID: 0}
-  MaxRandomAmountWantTake: 10
 --- !u!114 &1450675748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,3 +1459,54 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114277197683879320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968476592218994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8d14236ccd4d3439cd6577df3e49e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backpack: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  listaDelaCompra: 
+  maxFoodToBuy: 8
+  minFoodToBuy: 4
+  minFoodToBuyOfCertainProduct: 1
+  maxFoodToBuyOfCertainProduct: 2
+  currentFoodOnList: 0
+--- !u!114 &114451745681621906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968476592218994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5d046c90ac23c41ab416c2588a65c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 2
+--- !u!114 &114985883916882944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968476592218994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f88eddbc4a2ee4fbec64dd0437d53a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 2
+  DesiredFood: 0

@@ -108,5 +108,15 @@ public class BackpackComponent : MonoBehaviour
         ToDictionary();
         return dictionary.Keys.ToList();
     }
+
+    public void Add(Alimento.enAlimentos a,int amount)
+    {
+        if (maxAmount > alimentos.Count)
+        {
+            alimentos.Add(a);
+            ToDictionary();
+        }
+      
+    }
 }
 

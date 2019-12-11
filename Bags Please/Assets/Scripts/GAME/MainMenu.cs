@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         FindObjectOfType<AudioManager>().Play("InicioPartida");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        SceneManager.LoadScene("Nivel1");
     }
 
     public void Settings()

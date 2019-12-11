@@ -6,22 +6,22 @@ public class Alimento
 {
     public enum enAlimentos
     {
-        Kiwi,
-        Tomato,
-        Banana,
-        Apple,
-        Grape,
-        Yogurt,
-        IceCream,
-        Wine_Bottle,
-        Pumpkin,
-        Chips_Bag,
-        Cake,
-        Eggs,
-        Pizza,
-        Hamburger,
-        Ham,
-        Watermelon
+        Kiwi = 1,
+        Tomato = 2,
+        Banana = 3,
+        Apple = 4,
+        Grape = 5,
+        Yogurt = 6,
+        IceCream = 7,
+        Wine_Bottle = 8,
+        Pumpkin = 9,
+        Chips_Bag = 10,
+        Cake = 11,
+        Eggs = 12,
+        Pizza = 13,
+        Hamburger = 14,
+        Ham = 15,
+        Watermelon = 16
     };
 
     public static Dictionary<enAlimentos, float> Alimentos_MaxAmountEstante = new Dictionary<enAlimentos, float>();
